@@ -6,7 +6,12 @@ const fetch = require('node-fetch');
 dotenv.config();
 
 const app = express();
-app.use(cors());
+
+// CORS সেটিং (এখানে তোমার GitHub Pages origin দাও)
+app.use(cors({
+  origin: 'https://hamim2844.github.io'
+}));
+
 app.use(express.json());
 
 app.post('/api/ask', async (req, res) => {
@@ -37,4 +42,4 @@ app.post('/api/ask', async (req, res) => {
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log('Server running on port', PORT);
-}); 
+});
